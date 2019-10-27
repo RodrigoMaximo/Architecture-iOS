@@ -10,7 +10,7 @@
         <!--Countries List View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="CountriesListViewController" customModule="MVC_Example" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="CountriesListViewController" customModule="MVP_Example" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -19,7 +19,7 @@
                                 <rect key="frame" x="0.0" y="115" width="414" height="781"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CountriesListTableViewCell" id="aEb-Vd-VX1" customClass="CountriesListTableViewCell" customModule="MVC_Example" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CountriesListTableViewCell" id="aEb-Vd-VX1" customClass="CountriesListTableViewCell" customModule="MVP_Example" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="414" height="85.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="aEb-Vd-VX1" id="AxT-Fd-vcv">
@@ -60,10 +60,10 @@
                                 </prototypes>
                             </tableView>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="d8R-zV-Wss">
-                                <rect key="frame" x="145.5" y="64" width="123" height="32"/>
+                                <rect key="frame" x="188.5" y="64" width="37" height="32"/>
                                 <segments>
-                                    <segment title="Names"/>
-                                    <segment title="HDI"/>
+                                    <segment title=""/>
+                                    <segment title=""/>
                                 </segments>
                             </segmentedControl>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Q2-Rm-qDN">
@@ -109,7 +109,7 @@
         <!--Country View Controller-->
         <scene sceneID="Ckq-GN-Z2X">
             <objects>
-                <viewController id="XQN-LQ-a3W" customClass="CountryViewController" customModule="MVC_Example" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="XQN-LQ-a3W" customClass="CountryViewController" customModule="MVP_Example" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="aCg-5m-WOH">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

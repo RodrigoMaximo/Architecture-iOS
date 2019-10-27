@@ -11,7 +11,7 @@ import UIKit
 final class CountriesListTableViewCell: UITableViewCell {
 
     struct ViewModel {
-        let image: UIImage?
+        let imageName: String
         let description: String
     }
 
@@ -25,7 +25,7 @@ final class CountriesListTableViewCell: UITableViewCell {
     }
 
     func render(viewModel: ViewModel) {
-        mainImageView?.image = viewModel.image
+        mainImageView?.image = UIImage(named: viewModel.imageName)
         descriptionLabel?.text = viewModel.description
     }
 }
