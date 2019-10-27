@@ -1,0 +1,18 @@
+// TODO: Remove this Sourcery mark above
+import Foundation
+
+protocol {{argument.className}}InteractorProtocol {
+
+}
+
+final class {{argument.className}}Interactor: {{argument.className}}InteractorProtocol {
+    private let dataProvider: {{argument.className}}DataProviderProtocol
+    private var environment: {{argument.className}}EnvironmentProtocol
+    private let presenter: {{argument.className}}PresenterProtocol
+
+    init(dataProvider: {{argument.className}}DataProviderProtocol, environment: {{argument.className}}EnvironmentProtocol, presenter: {{argument.className}}PresenterProtocol) {
+        self.dataProvider = dataProvider
+        self.environment = environment
+        self.presenter = presenter
+    }
+}

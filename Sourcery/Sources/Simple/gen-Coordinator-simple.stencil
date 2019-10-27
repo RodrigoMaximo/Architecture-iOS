@@ -1,0 +1,29 @@
+// TODO: Remove this Sourcery mark above
+import Foundation
+
+final class {{argument.className}}Coordinator: Coordinator {
+
+    private let environment: {{argument.className}}EnvironmentExternalProtocol
+
+    // TODO: - Remove accessPoint if this screen does not need it
+    init(accessPoint: AccessPoint) {
+        let environment = {{argument.className}}Environment()
+        let dataProvider = {{argument.className}}DataProvider()
+        let presenter = {{argument.className}}Presenter()
+        let interactor = {{argument.className}}Interactor(dataProvider: dataProvider, environment: environment, presenter: presenter)
+        let view = {{argument.className}}View.make()
+        let viewController = {{argument.className}}ViewController(interactor: interactor, customView: view)
+        view.setup(delegate: viewController)
+        presenter.viewController = viewController
+        self.environment = environment
+        super.init(rootViewController: viewController)
+        viewController.coordinator = self
+    }
+}
+
+extension {{argument.className}}Coordinator: {{argument.className}}ViewControllerDelegate {
+}
+
+extension {{argument.className}}Coordinator: IsAccessPoint {
+}
+
