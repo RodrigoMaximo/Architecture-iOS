@@ -2,35 +2,9 @@
 import UIKit
 
 protocol {{argument.className}}ViewControllerDelegate: AnyObject {
-    func userDidSelectVIEW_OR_CELL
 }
 
 final class {{argument.className}}ViewController: CoordenableViewController {
-    let interactor: {{argument.className}}InteractorProtocol
-    weak var coordinator: {{argument.className}}ViewControllerDelegate?
-    private let customView: {{argument.className}}ViewProtocol
-
-    private let backgroundColor = Color.main.background
-
-    init(interactor: {{argument.className}}InteractorProtocol, customView: {{argument.className}}ViewProtocol) {
-        self.interactor = interactor
-        self.customView = customView
-        super.init(nibName: nil, bundle: nil)
-    }
-
-    required init?(coder aDecoder: NSCoder) {
-        fatalError()
-    }
-
-    override func loadView() {
-        view = customView
-        customView.setupBackground(with: backgroundColor)
-    }
-
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        navigationController?.navigationBar.barTintColor = backgroundColor
-    }
 }
 
 extension {{argument.className}}ViewController: UITableViewDataSource {
@@ -40,14 +14,4 @@ extension {{argument.className}}ViewController: UITableViewDelegate {
 }
 
 extension {{argument.className}}ViewController: MODELTableViewCellDelegate {
-}
-
-extension {{argument.className}}ViewController: {{argument.className}}PresenterDelegate {
-    func render(errorViewModel: {{argument.className}}ViewModel.Error) {
-        customView.render(errorViewModel)
-    }
-
-    func renderLoading() {
-        customView.renderLoading()
-    }
 }
