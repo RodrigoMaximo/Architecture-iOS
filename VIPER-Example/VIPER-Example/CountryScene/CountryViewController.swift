@@ -11,7 +11,8 @@ import UIKit
 final class CountryViewController: UIViewController {
 
     @IBOutlet private weak var mainImageView: UIImageView?
-    var country: Country?
+    var presenter: CountryPresenterProtocol!
+    var router: CountryRouterProtocol!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,11 +20,10 @@ final class CountryViewController: UIViewController {
     }
 
     private func setupMainImageView() {
-        guard let country = self.country else {
-            return
-        }
-        mainImageView?.image = UIImage(named: country.name)
+        mainImageView?.image = UIImage(named: presenter.imageName)
         mainImageView?.layer.borderColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
         mainImageView?.layer.borderWidth = 3
     }
 }
+
+extension CountryViewController: CountryPresenterDelegate {}

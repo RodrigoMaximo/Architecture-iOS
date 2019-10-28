@@ -14,19 +14,8 @@ final class CountriesListViewController: UIViewController {
     @IBOutlet private weak var tableView: UITableView?
     private let refreshControl = UIRefreshControl()
 
-    private let presenter: CountriesListPresenter = CountriesListPresenter()
-    private let segueToCountryId = "countrySegue"
-
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        super.prepare(for: segue, sender: sender)
-        guard
-            let country = sender as? Country,
-            let destinationVC = segue.destination as? CountryViewController else
-        {
-            return
-        }
-        destinationVC.country = country
-    }
+    var router: CountriesListRouterProtocol!
+    var presenter: CountriesListPresenterProtocol!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,14 +24,9 @@ final class CountriesListViewController: UIViewController {
     }
 
     private func setup() {
-        setupPresenter()
         setupSegmentedControl()
         setupRefreshControl()
         setupTableView()
-    }
-
-    private func setupPresenter() {
-        presenter.delegate = self
     }
 
     private func setupSegmentedControl() {
@@ -79,7 +63,8 @@ final class CountriesListViewController: UIViewController {
 extension CountriesListViewController: UITableViewDelegate, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        performSegue(withIdentifier: segueToCountryId, sender: presenter.selectedCountry(for: indexPath.row))
+        presenter.selectCountry(at: indexPath.row)
+        router.presentCountryScene(from: self)
         tableView.deselectRow(at: indexPath, animated: true)
     }
 

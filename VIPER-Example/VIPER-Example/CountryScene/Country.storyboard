@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="OeB-qv-LG4">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Country View Controller-->
+        <scene sceneID="A5R-mV-dKs">
+            <objects>
+                <viewController storyboardIdentifier="country" id="OeB-qv-LG4" customClass="CountryViewController" customModule="VIPER_Example" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="fly-Xo-vxb">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="AZs-Je-crN">
+                                <rect key="frame" x="77" y="358" width="260" height="180"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="180" id="6Ng-yn-ACv"/>
+                                    <constraint firstAttribute="width" constant="260" id="e9Q-kH-pzx"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="AZs-Je-crN" firstAttribute="centerX" secondItem="fly-Xo-vxb" secondAttribute="centerX" id="Ktg-nu-zRx"/>
+                            <constraint firstItem="AZs-Je-crN" firstAttribute="centerY" secondItem="fly-Xo-vxb" secondAttribute="centerY" id="mYK-mj-ODn"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="4uU-NK-NnC"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="Evc-DT-MqW"/>
+                    <connections>
+                        <outlet property="mainImageView" destination="AZs-Je-crN" id="rUy-0T-C25"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="b4p-PF-1vF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-81" y="52"/>
+        </scene>
+    </scenes>
+</document>

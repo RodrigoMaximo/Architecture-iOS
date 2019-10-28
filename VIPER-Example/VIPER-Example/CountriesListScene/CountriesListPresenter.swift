@@ -14,7 +14,7 @@ protocol CountriesListPresenterProtocol {
     func orderCountries(accordingTo segmentedIndex: Int)
     func segmentedNames() -> [String]
     func viewModelFor(row: Int, segmentedIndex: Int) -> CountriesListTableViewCell.ViewModel
-    func selectedCountry(for row: Int) -> Country
+    func selectCountry(at row: Int)
 }
 
 protocol CountriesListPresenterDelegate: AnyObject {
@@ -25,56 +25,47 @@ protocol CountriesListPresenterDelegate: AnyObject {
 
 final class CountriesListPresenter: CountriesListPresenterProtocol {
 
-    enum Segmented: Int, CaseIterable {
-        case names = 0
-        case hdi
-
-        var stringValue: String {
-            switch self {
-            case .names:
-                return "Names"
-            case .hdi:
-                return "HDI"
-            }
-        }
-    }
-
+    let interactor: CountriesListInteractorProtocol
     weak var delegate: CountriesListPresenterDelegate?
-    private var countries: [Country] = []
 
     var numberOfCountries: Int {
-        return countries.count
+        return interactor.countries.count
+    }
+
+    init(interactor: CountriesListInteractorProtocol) {
+        self.interactor = interactor
     }
 
     func reloadCountries() {
-        countries = CountriesProvider.provide(10)
-        delegate?.didReloadCountries()
+        interactor.reloadCountries()
     }
 
     func orderCountries(accordingTo segmentedIndex: Int) {
-        guard let segmented = Segmented(rawValue: segmentedIndex) else {
-            return
-        }
-        if segmented == .names {
-            countries = countries.sorted{ $0.name < $1.name }
-        } else {
-            countries = countries.sorted{ $0.hdi > $1.hdi }
-        }
-        delegate?.didOrderCountries()
+        interactor.orderCountries(accordingTo: segmentedIndex)
     }
 
     func segmentedNames() -> [String] {
-        return Segmented.allCases.map { $0.stringValue }
+        return interactor.segmentedNames()
     }
 
     func viewModelFor(row: Int, segmentedIndex: Int) -> CountriesListTableViewCell.ViewModel {
-        let country = countries[row]
-        let description = Segmented(rawValue: segmentedIndex) == .some(.names) ? country.name : String(country.hdi)
+        let country = interactor.countries[row]
+        let description = interactor.descriptionFor(row: row, segmentedIndex: segmentedIndex)
         return CountriesListTableViewCell.ViewModel(imageName: country.name,
                                                     description: description)
     }
 
-    func selectedCountry(for row: Int) -> Country {
-        return countries[row]
+    func selectCountry(at row: Int) {
+        return interactor.selectCountry(at: row)
+    }
+}
+
+extension CountriesListPresenter: CountriesListInteractorDelegate {
+    func didOrderedCountries() {
+        delegate?.didOrderCountries()
+    }
+
+    func didReloadCountries() {
+        delegate?.didReloadCountries()
     }
 }
