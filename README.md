@@ -1,4 +1,4 @@
-## Architecture Patterns iOS
+## iOS Architecture Patterns
 
 In this repository there are some iOS projects to represent an example app with different architecture patterns.
 
